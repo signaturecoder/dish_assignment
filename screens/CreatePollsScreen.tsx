@@ -1,15 +1,94 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
+import { Entypo } from '@expo/vector-icons';
+import { Image, Avatar } from 'react-native-elements';
 import { Text, View } from '../components/Themed';
+import FormField from '../components/FormField';
+import StyledButton from '../components/StyledButton';
 
-export default function TabOneScreen() {
+export default function CreatePollsScreen() {
+  const [dishValues, setDishValues] = useState({
+    name: '',
+    price: '',
+    rating: '',
+    description: '',
+    likes: '',
+    love: '',
+    favourite: ''
+  })
+  const [image, setImage] = useState('');
+  const [cameraIconClicked, setCameraIconClicked] = useState(false);
+  const [startCamera, setStartCamera] = useState(false)
+
+  const pickImage = () => {
+    // let result: any = await ImagePicker.launchImageLibraryAsync({
+    //     mediaTypes: ImagePicker.MediaTypeOptions.All,
+    //     allowsEditing: true,
+    //     aspect: [4, 3],
+    //     quality: 1,
+    // });
+
+
+    // if (!result.cancelled) {
+    //     setImage(result.uri);
+    // }
+  };
+
+  const handleStartCamera = () => {
+
+  }
+  const onInputChange = (value: string) => {
+
+  }
+
+  const handleSubmit = () => {
+
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Create Poll</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <View>
+        <View style={styles.imagePickerContainer}>
+          <Entypo name="upload" size={24} color="black" onPress={pickImage} />
+          {/* <Image source={{ uri: image  }} style={{ width: 100, height: 100, borderRadius: 50 }} /> */}
+          {image ? <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 50 }} /> : <Avatar
+            rounded
+            size={100}
+            source={require('../assets/images/avatar.png')}
+          />
+          }
+          <Entypo name="camera" size={24} color="black" onPress={handleStartCamera} />
+        </View>
+        <View>
+          <FormField 
+          placeholder="Dish Name"
+          label= "Dish Name"
+          values={dishValues.name}
+          onInputChange={(text: string) => onInputChange(text)}          
+          />
+          <FormField 
+          placeholder="Dish Price"
+          label= "Dish Price"
+          values={dishValues.price}
+          onInputChange={(text: string) => onInputChange(text)}          
+          />
+          <FormField 
+          placeholder="Dish Description"
+          label= "Dish Description"
+          values={dishValues.description}
+          onInputChange={(text: string) => onInputChange(text)}          
+          />
+          <FormField 
+          placeholder="Dish Rating"
+          label= "Dish Rating"
+          values={dishValues.rating}
+          onInputChange={(text: string) => onInputChange(text)}          
+          />
+        </View>
+
+        <StyledButton title="Add Poll" clicked={handleSubmit}/>
+      </View>
     </View>
   );
 }
@@ -17,16 +96,23 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center'
   },
   separator: {
     marginVertical: 30,
     height: 1,
     width: '80%',
+  },
+  imagePickerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 5
   },
 });

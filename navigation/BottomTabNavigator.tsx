@@ -1,4 +1,4 @@
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -23,7 +23,7 @@ export default function BottomTabNavigator() {
         name="CreatePolls"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="wpforms" color={color} />,
 
         }}
       />
@@ -31,7 +31,7 @@ export default function BottomTabNavigator() {
         name="Votes"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="vote-yea" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -40,8 +40,8 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
+  return <FontAwesome5 size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -55,8 +55,7 @@ function TabOneNavigator() {
         name="CreatePollsScreen"
         component={CreatePollsScreen}
         options={{ headerTitle: 'Create Polls', 
-        headerRight: () => <AntDesign name="logout" size={24} color="black" onPress={() => console.log('logout')}/>
-
+        headerRight: () => <AntDesign name="logout" style={{ marginRight: 15}} size={24} color="black" onPress={() => console.log('logout')}/>
       }}
       />
     </TabOneStack.Navigator>
@@ -72,7 +71,7 @@ function TabTwoNavigator() {
         name="VotesScreen"
         component={VotesScreen}
         options={{ headerTitle: 'Votes',
-        headerRight: () => <AntDesign name="logout" size={24} color="black" onPress={() => console.log('logout')}/>
+        headerRight: () => <AntDesign name="logout" style={{ marginRight: 15}} size={24} color="black" onPress={() => console.log('logout')}/>
       
       }}
       />
