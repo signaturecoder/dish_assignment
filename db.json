@@ -1,0 +1,85 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "uid": "u1",
+      "uname": "sanu",
+      "password": "sanu12345",
+      "address": "gaya",
+      "dishes": []
+    },
+    {
+      "id": 2,
+      "uid": "u2",
+      "uname": "sunny",
+      "password": "sunny12345",
+      "address": "gaya",
+      "dishes": []
+    },
+    {
+      "id": 3,
+      "uid": "u3",
+      "uname": "alka",
+      "password": "alka12345",
+      "address": "gaya",
+      "dishes": []
+    },
+    {
+      "id": 4,
+      "uid": "u4",
+      "uname": "micky",
+      "password": "micky12345",
+      "address": "gaya",
+      "dishes": []
+    },
+    {
+      "id": 5,
+      "uid": "u5",
+      "uname": "ravi",
+      "password": "ravi12345",
+      "address": "gaya",
+      "dishes": []
+    }
+  ],
+  "dishList": [
+    {
+      "id": 1,
+      "uid": "u1",
+      "name": "Aloo Paratha",
+      "photo": "",
+      "description": "North Indian",
+      "price": "50",
+      "rating": "4",
+      "points": "150",
+      "like": "2",
+      "love": "3",
+      "favourite": "5"
+    },
+    {
+      "id": 2,
+      "uid": "u1",
+      "name": "Masala Dosa",
+      "photo": "",
+      "description": "South Indian",
+      "price": "100",
+      "rating": "4",
+      "points": "150",
+      "like": "2",
+      "love": "3",
+      "favourite": "5"
+    },
+    {
+      "id": 3,
+      "uid": "u2",
+      "name": "Puri",
+      "photo": "",
+      "description": "North Indian",
+      "price": "20",
+      "rating": "4",
+      "points": "150",
+      "like": "2",
+      "love": "3",
+      "favourite": "5"
+    }
+  ]
+}
