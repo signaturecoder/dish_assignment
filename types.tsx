@@ -5,14 +5,14 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  CreatePolls: undefined;
+  Votes: undefined;
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
+  CreatePollsScreen: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  VotesScreen: undefined;
 };

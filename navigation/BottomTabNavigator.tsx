@@ -1,12 +1,12 @@
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import CreatePollsScreen from '../screens/CreatePollsScreen';
+import VotesScreen from '../screens/VotesScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -16,17 +16,19 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="CreatePolls"
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint
+      }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="CreatePolls"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Votes"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
@@ -50,9 +52,12 @@ function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        name="CreatePollsScreen"
+        component={CreatePollsScreen}
+        options={{ headerTitle: 'Create Polls', 
+        headerRight: () => <AntDesign name="logout" size={24} color="black" onPress={() => console.log('logout')}/>
+
+      }}
       />
     </TabOneStack.Navigator>
   );
@@ -64,9 +69,12 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        name="VotesScreen"
+        component={VotesScreen}
+        options={{ headerTitle: 'Votes',
+        headerRight: () => <AntDesign name="logout" size={24} color="black" onPress={() => console.log('logout')}/>
+      
+      }}
       />
     </TabTwoStack.Navigator>
   );

@@ -4,16 +4,17 @@ export default {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
+      Login: 'Login',
       Root: {
         screens: {
-          TabOne: {
+          CreatePolls: {
             screens: {
-              TabOneScreen: 'one',
+              CreatePollsScreen: 'create',
             },
           },
-          TabTwo: {
+          Votes: {
             screens: {
-              TabTwoScreen: 'two',
+              VotesScreen: 'votes',
             },
           },
         },
