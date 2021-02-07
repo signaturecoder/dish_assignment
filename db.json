@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "uid": "u1",
+      "userId": "u1",
       "uname": "sanu",
       "password": "sanu12345",
       "address": "gaya",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "uid": "u2",
+      "userId": "u2",
       "uname": "sunny",
       "password": "sunny12345",
       "address": "gaya",
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "uid": "u3",
+      "userId": "u3",
       "uname": "alka",
       "password": "alka12345",
       "address": "gaya",
@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "uid": "u4",
+      "userId": "u4",
       "uname": "micky",
       "password": "micky12345",
       "address": "gaya",
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "uid": "u5",
+      "userId": "u5",
       "uname": "ravi",
       "password": "ravi12345",
       "address": "gaya",
@@ -44,7 +44,7 @@
   "dishList": [
     {
       "id": 1,
-      "uid": "u1",
+      "userId": "u1",
       "name": "Aloo Paratha",
       "photo": "",
       "description": "North Indian",
@@ -57,7 +57,7 @@
     },
     {
       "id": 2,
-      "uid": "u1",
+      "userId": "u1",
       "name": "Masala Dosa",
       "photo": "",
       "description": "South Indian",
@@ -70,7 +70,7 @@
     },
     {
       "id": 3,
-      "uid": "u2",
+      "userId": "u2",
       "name": "Puri",
       "photo": "",
       "description": "North Indian",

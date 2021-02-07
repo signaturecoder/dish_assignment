@@ -6,14 +6,39 @@ import FormField from '../components/FormField';
 import StyledButton from '../components/StyledButton';
 import validateLogin from '../helpers/validateLogin';
 import Server from '../api/Server';
+import AsyncStorage from '@react-native-community/async-storage';
+import { STORAGE_KEY } from '../constants/Constant';
+import { loadUser, userLogin } from '../redux/actions/loginActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from '../redux/store/rootReducer';
 const LoginScreen = ({navigation}: any) => {
+    const dispatch = useDispatch();
+    const loginState = useSelector((state:AppState) => state.loginState)
     const [loginValues, setLoginValues] = useState({
         username: 'sanu',
         password: 'sanu12345'
     });
+    const [users, setUsers] = useState([]);
     const [errors, setErrors] = useState<any>({  
     })
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        const readData = async () => {
+            try {
+              const db = await AsyncStorage.getItem(STORAGE_KEY)
+              if (db !== null) {
+                const dbUsers = JSON.parse(db).users;
+                loadUser(dbUsers)
+                // console.log('Dbusers', dbUsers);
+                // setUsers(dbUsers);
+              }
+            } catch (e) {
+              alert('Failed to fetch the data from storage')
+            }
+          }
+        readData();
+    }, [])
 
     // useEffect(() => {
     //     console.log('ERRORS -->', errors);
@@ -28,16 +53,7 @@ const LoginScreen = ({navigation}: any) => {
     //             username: loginValues.username,
     //             password: loginValues.password,
     //           };
-
-    //           axios.get('http://localhost:3001/users', {
-    //             params: {
-    //                 uname: userLogged.username,
-    //                 password: userLogged.password,
-    //               },
-    //           }).then(res => {
-    //               console.log('REs', res.data);
-    //               Alert.alert(res.data);
-    //           }).catch(err => console.log('Err', err));
+          
            
     //     }
     // }, [errors])
@@ -46,21 +62,33 @@ const LoginScreen = ({navigation}: any) => {
         setErrors(validateLogin(loginValues));
         console.log({loginValues});
         const userLogged = {
-            username: loginValues.username,
+            uname: loginValues.username,
             password: loginValues.password,
           };
-        Server.get('/users', {
-            params: {
-                uname: userLogged.username,
-                password: userLogged.password,
-              },
-          }).then(res => {
-              console.log('REs', res.data);
-              Alert.alert(res.data);
-              if(res.data.length === 1) {
-                  navigation.navigate('Root');
-              }
-          }).catch(err => console.log('Err', err));
+        //   console.log('USERS', users);
+        dispatch(userLogin(userLogged));
+        //   const foundUsers = users && users.find((user: any) => {
+        //         return (user.uname === userLogged.username && user.password === userLogged.password)
+        //     })
+
+        //     if( foundUsers ){
+        //         navigation.navigate('Main');
+        //     } else {
+        //         alert('username and password mismatch');
+        //     }
+
+        // Server.get('/users', {
+        //     params: {
+        //         uname: userLogged.username,
+        //         password: userLogged.password,
+        //       },
+        //   }).then(res => {
+        //       console.log('REs', res.data);
+        //       Alert.alert(res.data);
+        //       if(res.data.length === 1) {
+        //           navigation.navigate('Root');
+        //       }
+        //   }).catch(err => console.log('Err', err));
         // setIsSubmitting(true);
     }
 
@@ -69,7 +97,8 @@ const LoginScreen = ({navigation}: any) => {
         setLoginValues(newloginValues);
 
     }
-    console.log('Navigation', navigation);
+
+    console.log('USERS APP STATE', loginState);
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={styles.loginContainer}>

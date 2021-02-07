@@ -1,8 +1,12 @@
 export type RootStackParamList = {
   Login: undefined;
-  Root: undefined;
-  NotFound: undefined;
+ 
 };
+
+export type MainStackParamList = {
+  Main: undefined;
+  NotFound: undefined;
+}
 
 export type BottomTabParamList = {
   CreatePolls: undefined;
