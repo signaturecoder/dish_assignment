@@ -16,8 +16,8 @@ const LoginScreen = ({navigation}: any) => {
     const dispatch = useDispatch();
     const loginState = useSelector((state:AppState) => state.loginState)
     const [loginValues, setLoginValues] = useState({
-        username: 'sanu',
-        password: 'sanu12345'
+        username: '',
+        password: ''
     });
     const [users, setUsers] = useState([]);
     const [errors, setErrors] = useState<any>({  
