@@ -56,7 +56,6 @@ function TabOneNavigator({navigation} :any) {
   const dispatch = useDispatch();
   const loginState = useSelector((state:AppState) => state.loginState)
   const loggedUser = loginState.users && loginState.users.uname;
-  console.log('loginSTate', loginState.users && loginState.users.uname);
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen

@@ -89,7 +89,6 @@ const LoginScreen = ({navigation}: any) => {
 
     }
 
-    console.log('USERS APP STATE', loginState);
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={styles.loginContainer}>

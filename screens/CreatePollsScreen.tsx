@@ -55,8 +55,18 @@ export default function CreatePollsScreen() {
   }
 
   const handleSubmit = () => {
-    console.log('Dish Values', dishValues);
     dishes.push(dishValues);
+    const emptydishValues = {
+      name: '',
+    price: '',
+    rating: '',
+    description: '',
+    photo: '',
+    likes: '',
+    love: '',
+    favourite: ''
+    }
+    setDishValues(emptydishValues);
     // const updateData = async () => {
     //   try {
     //     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dishes))
