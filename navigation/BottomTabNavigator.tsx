@@ -2,11 +2,12 @@ import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { userLogout } from '../redux/actions/loginActions';
+import { AppState } from '../redux/store/rootReducer';
 import CreatePollsScreen from '../screens/CreatePollsScreen';
 import VotesScreen from '../screens/VotesScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
@@ -53,12 +54,15 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator({navigation} :any) {
   const dispatch = useDispatch();
+  const loginState = useSelector((state:AppState) => state.loginState)
+  const loggedUser = loginState.users && loginState.users.uname;
+  console.log('loginSTate', loginState.users && loginState.users.uname);
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="CreatePollsScreen"
         component={CreatePollsScreen}
-        options={{ headerTitle: 'Create Polls', 
+        options={{ headerTitle: `Welcome, ${loggedUser.toUpperCase()}`, 
         headerRight: () => <AntDesign name="logout" style={{ marginRight: 15}} size={24} color="black" onPress={() =>dispatch(userLogout())
 
         }/>

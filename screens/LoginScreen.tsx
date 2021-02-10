@@ -11,6 +11,7 @@ import { STORAGE_KEY } from '../constants/Constant';
 import { loadUser, userLogin } from '../redux/actions/loginActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../redux/store/rootReducer';
+import { getUsersData } from '../helpers/dbData';
 const LoginScreen = ({navigation}: any) => {
     const dispatch = useDispatch();
     const loginState = useSelector((state:AppState) => state.loginState)
@@ -24,18 +25,8 @@ const LoginScreen = ({navigation}: any) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
-        const readData = async () => {
-            try {
-              const db = await AsyncStorage.getItem(STORAGE_KEY)
-              if (db !== null) {
-                const dbUsers = JSON.parse(db).users;
-                loadUser(dbUsers)
-                // console.log('Dbusers', dbUsers);
-                // setUsers(dbUsers);
-              }
-            } catch (e) {
-              alert('Failed to fetch the data from storage')
-            }
+        const readData = () => {
+             getUsersData().then(user => dispatch(loadUser(user)));
           }
         readData();
     }, [])
